@@ -2,49 +2,52 @@ import mongoose from "mongoose";
 import User from "./users";
 import Comment from "./comments";
 
-const pinSchema = new mongoose.Schema({
+const pinSchema = new mongoose.Schema(
+  {
     user: {
-     type: String,
-     ref: 'User',
-     required: true,
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User", // Reference to the User model
+      required: true,
     },
     title: {
-     type: String,
-     required: true,
-     trim: true,
+      type: String,
+      required: true,
+      trim: true,
     },
     description: {
-     type: String,
-     required: true,
-     trim: true,
+      type: String,
+      required: true,
+      trim: true,
     },
     tags: [
-     {
-      type: String,
-      trim: true,
-     },
+      {
+        type: String,
+        trim: true,
+      },
     ],
     image: {
-     url: String,
+      url: {
+        type: String,
+        required: true, // Enforce image URL is required
+      },
     },
     likes: [
-     {
-      user: String,
-     }
+      {
+        user: {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: "User", // Reference to the User model
+        },
+      },
     ],
     comments: [
-     {
-      user: String,
-      profileImage: String,
-      commentedOn: {
-        type: Date,
-        default: Date.now,
-      }
-     }
-    ]
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Comment", // Reference to the Comment model
+      },
+    ],
   },
-{timestamps: true}
+  { timestamps: true }
 );
 
+// Avoid re-compiling the model in case of hot reloading
 export default mongoose.models.Pin || mongoose.model("Pin", pinSchema);
-

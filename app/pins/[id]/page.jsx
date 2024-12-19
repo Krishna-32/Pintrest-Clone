@@ -51,7 +51,7 @@ function Pin() {
     if (session && session?.user) {
       const profileImage = session?.user?.image;
       const user = session?.user?.name;
-      console.log(session?.user);
+      console.log(pin);
       if (!comment || !profileImage || !user) {
         toast.error("Please add a comment");
         return;
@@ -74,7 +74,7 @@ function Pin() {
           setComment("");
         }
 
-        console.log(pin);
+        // console.log(pin);
       } catch (error) {
         toast.error(error.response.data.error);
       }
@@ -153,9 +153,10 @@ function Pin() {
                     user={element.user}
                     comment={element.comment}
                     profileImage={element.profileImage}
+                    username={element.user?.username}
                   />
                 ))
-              ) : (
+              ) : ( 
                 <span>No Comments</span>
               )}
             </div>

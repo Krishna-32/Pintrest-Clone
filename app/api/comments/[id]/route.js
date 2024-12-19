@@ -22,7 +22,7 @@ export async function POST(request, { params }) {
     return NextResponse.json({ success: false, error: "Pin not found" }, { status: 404 });
   }
 
-  const formData = await req.formData();
+  const formData = await request.formData();
 
   const username = formData.get('user');
   const comment = formData.get('comment');
@@ -40,8 +40,9 @@ export async function POST(request, { params }) {
     profileImage,
     pin: id,
   });
-  
 
+  console.log("newComment", newComment);
+  
   return NextResponse.json({ success: true, message: "Comment added successfully" }, { status: 201 });
  } catch (error) {
   console.error(error);
