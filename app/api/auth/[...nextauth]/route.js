@@ -43,14 +43,7 @@ const authOptions = {
   ],
   pages: {
     signIn: "/login",
-  },
-  callbacks: {
-    // Use this redirect callback for both Google and custom authentication
-    async redirect({ url, baseUrl }) {
-      console.log("Redirecting to:", `https://pintrest-clone-ten.vercel.app/api/auth/callback/google`);
-      return baseUrl; // Defaults to the baseUrl of your app
-    },
-  },
+  }
 };
 
 const handler = NextAuth(authOptions);
