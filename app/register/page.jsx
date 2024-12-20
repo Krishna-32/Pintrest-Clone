@@ -53,7 +53,7 @@ function Register() {
       formData.append("password", password);
       formData.append("image", image);
 
-      await axios.post("https://pintrest-clone-theta.vercel.app/api/auth/register", formData,{
+      await axios.post("/api/auth/register", formData,{
         headers: {
           "Content-Type": "multipart/form-data",
         },
