@@ -47,6 +47,7 @@ function Login() {
     if (res?.ok) {
       toast.success("Logged in successfully");
       router.push("/");
+      router.refresh();
     }
   };
 
