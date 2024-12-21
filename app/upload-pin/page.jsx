@@ -51,7 +51,7 @@ function UploadPin() {
 
     try {
       setLoading(true);
-      const response = await axios.post("http://localhost:3000/api/pins", formData, {
+      const response = await axios.post("/api/pins", formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
